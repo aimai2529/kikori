@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_レイヤー_2" data-name="レイヤー_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 125.26 109.41">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#_名称未設定グラデーション_7);
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #fff;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 3px;
+      }
+
+      .cls-3 {
+        fill: #423f48;
+      }
+    </style>
+    <linearGradient id="_名称未設定グラデーション_7" data-name="名称未設定グラデーション 7" x1="30.35" y1="43.79" x2="75.2" y2="43.79" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffb6ce"/>
+      <stop offset=".5" stop-color="#e5bdff"/>
+      <stop offset="1" stop-color="#c0ceff"/>
+    </linearGradient>
+  </defs>
+  <g id="_レイヤー_4" data-name="レイヤー_4">
+    <g>
+      <rect class="cls-3" x="15.93" y="82.89" width="59.27" height="12.15" rx="6.07" ry="6.07"/>
+      <rect class="cls-3" x="98.89" y="0" width="26.37" height="12.15" rx="6.07" ry="6.07"/>
+      <rect class="cls-3" x="19.31" y="61.57" width="63.29" height="12.15" rx="6.07" ry="6.07"/>
+      <rect class="cls-3" x="-14.78" y="39.14" width="60.55" height="12.15" rx="6.07" ry="6.07" transform="translate(51.11 13.33) rotate(67.09)"/>
+      <rect class="cls-3" x="0" y="16.83" width="98.36" height="12.15" rx="6.07" ry="6.07"/>
+      <rect class="cls-3" x="36.91" y="41.46" width="101.8" height="12.15" rx="6.07" ry="6.07" transform="translate(10.33 110.53) rotate(-67.54)"/>
+      <g>
+        <path class="cls-2" d="M32.59,40.58l12.38-4.58,4.58-12.38c1.1-2.99,5.33-2.99,6.43,0l4.58,12.38,12.38,4.58c2.99,1.1,2.99,5.33,0,6.43l-12.38,4.58-4.58,12.38c-1.1,2.99-5.33,2.99-6.43,0l-4.58-12.38-12.38-4.58c-2.99-1.1-2.99-5.33,0-6.43Z"/>
+        <path class="cls-1" d="M32.59,40.58l12.38-4.58,4.58-12.38c1.1-2.99,5.33-2.99,6.43,0l4.58,12.38,12.38,4.58c2.99,1.1,2.99,5.33,0,6.43l-12.38,4.58-4.58,12.38c-1.1,2.99-5.33,2.99-6.43,0l-4.58-12.38-12.38-4.58c-2.99-1.1-2.99-5.33,0-6.43Z"/>
+      </g>
+      <rect class="cls-3" x="26.62" y="98.37" width="11.04" height="11.04" rx="5.52" ry="5.52"/>
+      <rect class="cls-3" x="58.74" y="98.37" width="11.04" height="11.04" rx="5.52" ry="5.52"/>
+    </g>
+  </g>
+</svg>

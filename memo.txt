@@ -1,0 +1,22 @@
+backend で　node server.js BD起動 SQLiteに接続
+frontend　で　npm run dev local起動
+
+
+sqlite3 database.sqlite
+SQLite version 3.43.2 2023-10-10 13:08:14
+Enter ".help" for usage hints.
+sqlite> PRAGMA table_info(cosmetics);
+0|id|INTEGER|0||1
+1|name|TEXT|1||0
+2|review|TEXT|1||0
+3|user_id|INTEGER|0||0
+sqlite> ALTER TABLE cosmetics ADD COLUMN rating INTEGER;　なんかこれ追加した
+sqlite> PRAGMA table_info(cosmetics);
+0|id|INTEGER|0||1
+1|name|TEXT|1||0
+2|review|TEXT|1||0
+3|user_id|INTEGER|0||0
+4|rating|INTEGER|0||0
+sqlite> .exit
+
+化粧品、化粧水A（成分A、B、C）みたいにした方が良くないか……？（今更）
