@@ -5,37 +5,49 @@ const db = require("../db");
 
 // 化粧品登録API
 router.post("/", (req, res) => {
-    const { companyCosmeticId, name, review, rating, userId } = req.body;
+    const { name, review, rating, userId, companyCosmeticId } = req.body;
 
-    // companyCosmeticId を優先。無ければ名前で登録（ただし分析しやすいのは companyCosmeticId）
-    if (!review || !userId || !rating || (!companyCosmeticId && !name)) {
-        return res.status(400).json({ message: "全ての必須項目を入力してください" });
+    if ((!name && !companyCosmeticId) || !review || !userId || !rating) {
+        return res.status(400).json({ message: "全ての項目を入力してください" });
     }
 
-    db.run(
-        "INSERT INTO cosmetics (name, review, rating, user_id, company_cosmetic_id) VALUES (?, ?, ?, ?, ?)",
-        [name || null, review, rating, userId, companyCosmeticId || null],
-        function (err) {
-            if (err) {
-                console.error(err);
-                return res.status(500).json({ message: "化粧品の登録に失敗しました" });
+    // companyCosmeticId がある場合は company_cosmetics から name を取得して保存
+    const handleInsert = (finalName) => {
+        db.run(
+            "INSERT INTO cosmetics (name, review, rating, user_id, company_cosmetic_id) VALUES (?, ?, ?, ?, ?)",
+            [finalName, review, rating, userId, companyCosmeticId],
+            function (err) {
+                if (err) {
+                    console.error(err);
+                    return res.status(500).json({ message: "化粧品の登録に失敗しました" });
+                }
+                res.json({ message: "化粧品を登録しました", id: this.lastID });
             }
-            res.json({ message: "化粧品を登録しました", id: this.lastID });
-        }
-    );
+        );
+    };
+
+    if (companyCosmeticId) {
+        db.get(
+            "SELECT name FROM company_cosmetics WHERE id = ?",
+            [companyCosmeticId],
+            (err, row) => {
+                if (err || !row) {
+                    console.error(err);
+                    return res.status(500).json({ message: "企業化粧品の取得に失敗しました" });
+                }
+                handleInsert(row.name);
+            }
+        );
+    } else {
+        handleInsert(name);
+    }
 });
 
-// ユーザーごとの化粧品一覧取得API（companyの情報をJOINして返す）
+// ユーザーごとの化粧品一覧取得API
 router.get("/:userId", (req, res) => {
     const { userId } = req.params;
 
-    const sql = `
-    SELECT c.*, cc.id AS company_id, cc.name AS company_name, cc.ingredients, cc.brand, cc.category, cc.price
-    FROM cosmetics c
-    LEFT JOIN company_cosmetics cc ON c.company_cosmetic_id = cc.id
-    WHERE c.user_id = ?
-    `;
-    db.all(sql, [userId], (err, rows) => {
+    db.all("SELECT * FROM cosmetics WHERE user_id = ?", [userId], (err, rows) => {
         if (err) {
             console.error(err);
             return res.status(500).json({ message: "データ取得に失敗しました" });
